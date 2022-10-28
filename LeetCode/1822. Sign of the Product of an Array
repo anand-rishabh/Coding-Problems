@@ -1,0 +1,25 @@
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        
+        # Method - 1   Faster than 2nd
+        
+        count = 1
+        if 0 in nums:
+            return 0
+        else:
+            for i in nums:
+                if i < 0:
+                    count *= -1 
+            return count
+
+
+        # METHOD - 2
+        
+        mult = math.prod(nums)
+        if mult == 0:
+            return 0
+        elif mult < 1:
+            return -1
+        else:
+            return 1
+               
