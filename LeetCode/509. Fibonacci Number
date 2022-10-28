@@ -1,0 +1,22 @@
+#         METHOD - 1
+
+dic = {0:0,1:1}
+for i in range(2,n+1):
+    dic[i] = dic[i-1] + dic[i-2]
+return dic[n]
+    
+#       METHOD - 2
+
+        if n == 0 :
+            return 0
+        if n == 1 :
+            return 1
+        first = 0
+        second = 1
+        add = 0
+        for i in range(n-1):
+            add = first + second
+            first = second 
+            second = add
+        return add
+            
