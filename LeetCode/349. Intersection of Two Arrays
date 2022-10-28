@@ -1,0 +1,38 @@
+********************************** # Method - 1 **********************************
+
+d = {}
+for i in nums1:
+    d[i] = 0        
+for i in nums2:
+    if i not in d:
+        continue
+    else:
+        d[i] = d[i]+1
+
+res = []
+for k,v in d.items():
+    if v > 0:
+        res.append(k)
+return res
+
+
+********************************** # Method - 2 **********************************
+
+
+1=set(nums1)
+s2=set(nums2)
+a=[]
+for i in s1:
+    if i in s2:
+        a.append(i)
+return a
+        
+        
+********************************** # Method - 3 **********************************
+
+
+li = []
+for i in nums1:
+    if i in nums2:
+        li.append(i)
+return list(set(li))
