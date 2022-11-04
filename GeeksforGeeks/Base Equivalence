@@ -1,0 +1,14 @@
+import math
+class Solution:
+	def baseEquiv(self, n, m):
+		i = 2
+		
+		while i <= 32:
+		    digit = int(math.log(n)/math.log(i)) + 1
+		    
+		    if digit == m:
+		        return "Yes"
+	        else:
+	            i += 1
+	    return "No"
+		           
