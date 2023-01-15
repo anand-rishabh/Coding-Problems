@@ -1,0 +1,50 @@
+class Solution:
+    def pairSum(self, head: Optional[ListNode]) -> int:
+    
+    # ******** METHOD - 1 Using Linear Method  ***********
+    
+        # arr = []
+        # temp = head
+        # while temp is not None:
+        #     arr.append(temp.val)
+        #     temp = temp.next
+        # j = len(arr) - 1
+        # ans = 0
+        # for i in range(len(arr)):
+        #     add = arr[i] + arr[j]
+        #     j -= 1
+        #     ans = max(add,ans) 
+        # return ans
+
+    # ******** METHOD - 2 Using Linked List Method  ***********
+        curr = head
+        temp = head
+        c = 0
+        while temp:
+            c+=1
+            temp = temp.next
+        temp = head
+        mid = (c//2) - 1
+
+        while mid != 0:
+            temp = temp.next
+            mid-=1
+
+        newhead = temp.next
+
+        current = newhead
+        prev = None
+        while current:
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
+        newhead = prev
+
+        sum = 0
+        while newhead:
+            sum = max(sum,(curr.val + newhead.val))
+            
+            curr = curr.next
+            newhead = newhead.next
+        return sum
