@@ -1,0 +1,12 @@
+class Solution:
+    def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        curr = head
+        nxt = head.next
+        while nxt is not None:
+            curr.val = curr.val + nxt.val
+            if nxt.val == 0 and nxt.next is not None:
+                curr.next = nxt
+                curr = nxt
+            nxt = nxt.next
+        curr.next = None
+        return head
