@@ -1,0 +1,15 @@
+def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        stak = []
+        curr = head
+        while curr:
+            while stak and curr.val > stak[-1].val:
+                stak.pop()     						  
+            stak.append(curr)
+            curr = curr.next
+        temp = ListNode()
+        curr = temp
+
+        for node in stak:
+            curr.next = node
+            curr = curr.next
+        return temp.next
