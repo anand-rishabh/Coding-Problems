@@ -1,0 +1,11 @@
+first , second = list1,list1
+        for i in range(a-1):
+            first = first.next
+        
+        for j in range(b):
+            second = second.next
+        first.next = list2
+        while list2.next:
+            list2 = list2.next
+        list2.next = second.next
+        return list1
