@@ -1,0 +1,25 @@
+def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        ans = head
+        first = head
+        last = head
+
+        n = 0
+        l = 0
+        count = 0
+
+        while head:
+            head = head.next
+            count += 1
+
+        # if count == k:
+        #     return ans
+
+        while first and n<k-1:
+            first = first.next
+            n+=1
+
+        while last and l<(count-k):
+            last = last.next
+            l+=1
+        first.val,last.val = last.val,first.val
+        return ans
