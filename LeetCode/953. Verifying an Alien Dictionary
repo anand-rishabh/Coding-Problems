@@ -1,0 +1,14 @@
+def isAlienSorted(self, words: List[str], order: str) -> bool:
+    h = {val: i for i, val in enumerate(order)}
+    
+    prev = []
+    for k in words[0]:
+        prev.append(h[k])
+
+    for i in range(1, len(words)):
+        cur = list(h[ch] for ch in words[i])
+        print(cur)
+        if cur < prev:
+            return False
+        prev = cur
+    return True
