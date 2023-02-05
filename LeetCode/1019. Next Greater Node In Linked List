@@ -1,0 +1,18 @@
+class Solution:
+    def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
+        # if not head or head:
+        #     return head
+
+        node_value = []
+        while head:
+            node_value.append(head.val)
+            head = head.next
+        output = [0] * len(node_value)
+        stack = []
+
+        for i,value in enumerate(node_value):
+            while stack and node_value[stack[-1]] < value:
+                output[stack.pop()] = value
+            stack.append(i)
+        return output
+        
