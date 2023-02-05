@@ -1,0 +1,19 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        cntr_p = Counter(p)
+        cntr_s = Counter()
+        len_p = len(p)
+        arr = []
+
+        for i,v in enumerate(s):
+            cntr_s[s[i]] += 1
+
+            if i >= (len_p-1):
+                left_elem = s[i-(len_p-1)]
+
+                if cntr_s == cntr_p:
+                    arr.append(i-(len_p-1))
+                    cntr_s[left_elem] -= 1
+                else:
+                    cntr_s[left_elem] -= 1       
+        return arr
