@@ -1,0 +1,26 @@
+class Solution:
+    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        rot_1 = []
+        rot_2 = []
+
+        def first(root):
+            if root:
+                if not root.left and not root.right:
+                    rot_1.append(root.val)
+                first(root.left)
+                first(root.right)
+            return rot_1
+
+        def second(root):
+            if root:
+                if not root.left and not root.right:
+                    rot_2.append(root.val)
+                second(root.left)
+                second(root.right)
+            return rot_2
+        stp = first(root1)
+        ndp = second(root2)
+        print(stp,ndp)
+        if stp == ndp:
+            return True
+        return False
