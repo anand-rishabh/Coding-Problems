@@ -1,0 +1,19 @@
+class Solution:
+    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+        ary = []
+        curr = head
+        while curr:
+            ary.append(curr.val)
+            curr = curr.next
+        l = 0
+        r = len(ary)-1
+        
+        def helper(l,r):
+            if l > r:
+                return None
+            mid = (l+r)//2
+            root = TreeNode(ary[mid])
+            root.left = helper(l,mid-1)
+            root.right =helper(mid+1,r)
+            return root
+        return helper(l,r)
