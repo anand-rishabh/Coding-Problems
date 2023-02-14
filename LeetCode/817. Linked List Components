@@ -1,0 +1,12 @@
+class Solution:
+    def numComponents(self, head: Optional[ListNode], nums: List[int]) -> int:
+        
+        count = 0
+        curr = head
+        while curr:
+            if curr.val in nums:
+                count += 1
+                while curr.next and curr.next.val in nums:
+                    curr = curr.next
+            curr = curr.next
+        return count
