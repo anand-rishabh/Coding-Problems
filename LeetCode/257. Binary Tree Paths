@@ -1,0 +1,16 @@
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        if not root:
+            return None
+        ans = []
+
+        def helper(root,path):
+            if not root.left and not root.right:
+                ans.append(path)
+            if root.left:
+                helper(root.left,path+"->"+str(root.left.val))
+            if root.right:
+                helper(root.right,path+"->"+str(root.right.val))
+
+        helper(root,str(root.val))
+        return ans
