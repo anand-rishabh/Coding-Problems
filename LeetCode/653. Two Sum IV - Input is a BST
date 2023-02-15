@@ -1,0 +1,22 @@
+class Solution:
+    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+
+        arry = []
+
+        def inorder(root):
+            if root:
+                inorder(root.left)
+                arry.append(root.val)
+                inorder(root.right)
+        inorder(root)
+        l = 0
+        r = len(arry)-1
+        while l < r:
+            if arry[l] + arry[r] == k:
+                return True
+            else:
+                if arry[l] + arry[r] > k:
+                    r -= 1
+                else:
+                    l += 1
+        return False
