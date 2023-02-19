@@ -1,0 +1,22 @@
+class Solution:
+    def getMinimumDifference(self, root: TreeNode) -> int:
+
+
+        def inorder(root,output):
+            if root == None:
+                return 
+            else:
+                inorder(root.left, output)
+                output.append(root.val)
+                inorder(root.right, output)
+
+
+        output = []
+
+        inorder(root,output)
+
+        mini = float(inf)
+
+        for i in range(1,len(output)):
+            mini = min(mini,output[i]-output[i-1])
+        return mini
