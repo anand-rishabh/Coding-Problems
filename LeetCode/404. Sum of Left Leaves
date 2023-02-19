@@ -1,0 +1,12 @@
+class Solution:
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        sums = []
+
+        def helper(root,infr):
+            if root:
+                if not root.left and not root.right and infr=='True':
+                    sums.append(root.val)
+                helper(root.left,'True') 
+                helper(root.right,'False')
+        helper(root,'False')
+        return sum(sums) 
