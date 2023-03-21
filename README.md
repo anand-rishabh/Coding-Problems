@@ -1,2 +1,2 @@
 # Coding-Problems
-I am uploading Codechef, GeeksforGeeks,Leetcode problem Solution.
+I am uploading problems Solution.
