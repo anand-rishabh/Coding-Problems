@@ -1,0 +1,28 @@
+class Solution:
+    def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
+
+        xparent,yparent = root.val,root.val
+        x_depth,y_depth = 0,0
+
+        def helper(root,d,parent):
+            nonlocal xparent
+            nonlocal yparent
+            nonlocal x_depth
+            nonlocal y_depth
+
+            if not root:
+                return
+            if root.val == x:
+                xparent = parent
+                x_depth = d
+            if root.val == y:
+                yparent = parent
+                y_depth = d
+            
+            helper(root.left,d+1,root.val)
+            helper(root.right,d+1,root.val)
+
+
+        helper(root,0,root.val)
+        print(xparent,yparent,x_depth,y_depth)
+        return xparent != yparent and x_depth == y_depth
