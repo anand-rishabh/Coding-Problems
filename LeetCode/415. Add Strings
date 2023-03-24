@@ -1,0 +1,26 @@
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+
+        
+        num1 = num1[::-1]
+        num2 = num2[::-1]
+
+        if len(num1) < len(num2):
+            req = len(num2)-len(num1)
+            num1 += "0"*req
+        else:
+            req = len(num1)-len(num2)
+            num2 += "0"*req
+
+        ans= ""
+        carry = 0
+        
+        for i in range(len(num1)):
+            sm = int(num1[i]) + int(num2[i]) + carry
+            carry = sm // 10
+            ans += str(sm % 10) 
+            
+        if carry > 0:
+            ans = ans + "1"
+        return ans[::-1]
+            
