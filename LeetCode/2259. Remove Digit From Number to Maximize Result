@@ -1,0 +1,24 @@
+class Solution:
+    def removeDigit(self, number: str, digit: str) -> str:
+
+        arr = []
+        for i in range(len(number)):
+            if number[i] == digit:
+                temp = number[:i] + number[i+1:]
+                arr.append(temp)
+        return max(arr)
+        
+        
+        ********************* Method - 2 **************************
+        
+        last_pos = 0
+        for i in range(len(number)-1):
+            if number[i] == digit:
+                if int(number[i]) < int(number[i+1]):
+                    number = number[0:i]+number[i+1:]
+                    return number
+                else:
+                    lastpos = i
+        if number[-1] == digit:
+            lastpos = len(number)-1
+        return number[:lastpos] + number[lastpos+1:]
