@@ -1,0 +1,23 @@
+class Solution:
+    def smallestSubWithSum(self, a, n, x):
+    
+        start = 0
+        end = 1
+        s = a[start]
+        ans = n+1
+        
+        if s>x:
+            return 1
+        if end<n:
+            s+=a[end]
+
+        while start<n and end<n:
+            if s > x:
+                ans = min(ans,(end-start+1))
+                s = s - a[start]
+                start += 1                
+            else:
+                end += 1
+                if end < n:
+                    s += a[end]
+        return ans
