@@ -1,0 +1,18 @@
+class Solution:
+    def MedianOfArrays(self, array1, array2):
+        new_arr = array1 + array2
+        new_arr.sort()
+		n = len(new_arr)
+        if n%2!=0:
+            left = 0
+            right = n
+            mid = (left+right)//2
+            ans = new_arr[mid]
+        else:
+            left = 0
+            right = (n//2)
+            ans = (new_arr[right]+ new_arr[right-1])/2
+        new_ans = int(ans)
+		if ans > new_ans:
+		    return ans
+		return new_ans
