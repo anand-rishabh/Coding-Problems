@@ -1,0 +1,16 @@
+class Solution:
+    def findLongestConseqSubseq(self,arr, N):
+        #code here
+        arr.sort()
+        # print(arr)
+        count = 1
+        value = 1
+        for i in range(N-1):
+            if arr[i] == arr[i+1]-1:
+                count += 1
+            elif arr[i] == arr[i+1]:
+                continue
+            else:
+                count = 1
+            value = max(count,value)
+        return value
