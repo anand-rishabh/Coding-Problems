@@ -1,0 +1,15 @@
+class Solution:
+    def getPairsCount(self, arr, n, k):
+        
+        hm = {}
+        cnt = 0
+        for i in arr:
+            target = k - i
+            if target in hm:
+                cnt += hm[target]
+            if i not in hm:
+                hm[i] = 1
+            else:
+                hm[i] += 1
+            
+        return cnt
