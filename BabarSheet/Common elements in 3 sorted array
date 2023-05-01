@@ -1,0 +1,23 @@
+class Solution:
+    def commonElements (self,A, B, C, n1, n2, n3):
+        arr = []
+        
+        def binary(arr,n,elmnt):
+            l = 0
+            r = n-1
+            while l <= r:
+                mid = (l+r)//2
+                if arr[mid] == elmnt:
+                    return True
+                elif arr[mid] > elmnt:
+                    r = mid-1
+                else:
+                    l = mid + 1
+            return False
+        
+        for i in range(n1):
+            if i > 0 and  A[i-1] == A[i]:
+                continue
+            if binary(B,n2,A[i]) and binary(C,n3,A[i]):
+                arr.append(A[i])
+        return arr
