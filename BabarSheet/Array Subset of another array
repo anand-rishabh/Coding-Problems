@@ -1,0 +1,20 @@
+def isSubset( a1, a2, n, m):
+    i = 0
+    j = 0
+    if n < m:
+        return "No"
+ 
+    a1.sort()
+    a2.sort()
+ 
+    while i < m and j < n:
+        if a1[j] < a2[i]:
+            j += 1
+        elif a1[j] == a2[i]:
+            j += 1
+            i += 1
+        elif a1[j] > a2[i]:
+            return "No"
+    return "No" if i < m else "Yes"
+        
+    
