@@ -1,0 +1,27 @@
+class Solution:
+    def trappingWater(self, height,n):
+
+        # mn = len(height)
+        max_left = [0]*n
+        max_right = [0]*n
+        min_trap = [0]*n
+
+        temp = 0
+        for i in range(n):
+            if i > 0 :
+                temp = max(temp,height[i-1])
+            max_left[i] = temp
+
+        temp = 0
+        for j in reversed(range(n-1)):
+            if j < n-1:
+                temp = max(temp,height[j+1])
+            max_right[j] = temp
+
+        sum = 0
+        for m in range(n):
+            min_trap[m] = min(max_left[m],max_right[m])
+            sub = min_trap[m] - height[m]
+            if sub > 0:
+                sum += sub
+        return sum
