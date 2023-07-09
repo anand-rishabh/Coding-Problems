@@ -1,0 +1,11 @@
+def maxSubArray(self, arr: List[int]) -> int:
+        n = len(arr)
+        sm = 0
+        ans = arr[0]
+        for i in arr:
+            sm += i
+            ans = max(ans,sm)
+            if sm < 0:
+                sm = 0
+        return ans 
+ 
