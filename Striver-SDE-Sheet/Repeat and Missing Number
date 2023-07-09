@@ -1,0 +1,21 @@
+# Coding Ninja
+
+def missingAndRepeating(arr, n):
+    sn = (n * (n+1))//2
+    s2n = (n * (n + 1) * (2 * n + 1)) // 6
+    s = 0
+    s2 = 0
+    x = 0
+    y = 0
+    for i in range(n):
+        s += arr[i]
+        s2 += (arr[i]*arr[i])
+    
+    val1 = s-sn
+    val2 = s2 - s2n
+
+    plus = val2//val1
+
+    x = (plus + val1)//2
+    y = x - val1
+    return [y,x]
