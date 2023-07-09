@@ -1,0 +1,15 @@
+def maxProfit(self, prices: List[int]) -> int:
+          
+        left = 0
+        right = 1
+        temp = 0
+
+        while right < len(prices):
+            if prices[right] > prices[left]:
+                x = prices[right] - prices[left]
+                temp = max(temp,x)  
+            else:
+                left = right
+            right += 1
+        
+        return temp
