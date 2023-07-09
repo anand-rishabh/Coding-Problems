@@ -1,0 +1,18 @@
+def setZeroes(self, matrix: List[List[int]]) -> None:
+        
+        row = len(matrix)
+        col = len(matrix[0])
+
+        hor = [0]*row
+        vir = [0] * col
+
+        for i in range(row):
+            for j in range(col):
+                if matrix[i][j] == 0:
+                    hor[i] = 1
+                    vir[j] = 1
+        for i in range(row):
+            for j in range(col):
+                if hor[i] or vir[j]:
+                    matrix[i][j] = 0
+        return matrix
