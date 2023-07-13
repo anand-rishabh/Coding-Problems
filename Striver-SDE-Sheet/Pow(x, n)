@@ -1,0 +1,19 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        ans = 1.0
+        powr = abs(n)
+
+        while powr > 0:
+
+            if powr % 2  :    # not equal to zero
+                ans = ans * x
+                powr -= 1
+            else:
+                x = x * x
+                powr = powr//2
+        
+        if n >= 0:
+            return ans
+        else:
+            return 1/ans
+
