@@ -1,0 +1,29 @@
+import heapq
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+
+        if len(nums)==0:
+            return 0
+        elif len(nums)==1:
+            return 1
+
+        heapq.heapify(nums)
+        cnt = 1
+        max_val = 1
+       
+        while len(nums) > 1:
+            elem = heapq.heappop(nums)
+            next_elem = nums[0]
+            if elem+1 == nums[0]:
+                cnt += 1
+            elif elem == nums[0]:
+                continue
+            else:
+                cnt = 1
+            max_val = max(max_val,cnt)
+        return max_val
+
+
+
+
+        
