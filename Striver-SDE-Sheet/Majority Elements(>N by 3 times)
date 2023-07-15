@@ -1,0 +1,38 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        x = -1
+        y = -1
+        countx = 0
+        county = 0
+
+        for i in range(len(nums)):
+            if x==nums[i]:
+                countx += 1
+            elif y == nums[i]:
+                county +=1
+            elif countx == 0:
+                x = nums[i]
+                countx = 1
+            elif county == 0:
+                y = nums[i]
+                county = 1
+            else:
+                countx -= 1
+                county -= 1
+        check = len(nums)//3
+        countx = 0
+        county = 0
+        for i in range(len(nums)):
+            if nums[i] == x:
+                countx += 1
+            elif nums[i] == y:
+                county += 1
+        
+        if countx > check and county > check:
+            return [x,y]
+        elif countx > check:
+            return [x]
+        elif county > check:
+            return [y]
+        else:
+            return []
