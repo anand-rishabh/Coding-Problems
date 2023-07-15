@@ -1,0 +1,15 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        # cnt = collections.Counter(s)
+        # heap = [(-v, k) for k, v in cnt.items()]
+        # heapq.heapify(heap)
+        # res = []
+        # while heap:
+        #     v, k = heapq.heappop(heap)
+        #     res += [k] * -v
+        # return ''.join(res)
+
+        a = ''
+        for i, j in Counter(s).most_common():
+            a += i * j
+        return a
