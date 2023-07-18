@@ -1,0 +1,32 @@
+l1 = headA
+l2 = headB
+count1 = 0
+count2 = 0
+
+while l1:
+    count1 += 1
+    l1 = l1.next
+    
+while l2:
+    count2 += 1
+    l2 = l2.next
+    
+if count1 > count2:
+    curL = headA
+    diff = count1 - count2
+    curS = headB
+    while diff>0:
+        diff -= 1
+        curL = curL.next
+else:
+    curL = headB
+    diff = count2 - count1
+    curS = headA
+    while diff > 0:
+        diff -= 1
+        curL = curL.next
+        
+while curL != curS:
+    curL = curL.next
+    curS = curS.next
+return curL
