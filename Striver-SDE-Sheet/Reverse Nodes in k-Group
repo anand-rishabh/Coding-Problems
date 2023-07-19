@@ -1,0 +1,33 @@
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+
+        def kth(curr,k):
+            while curr and k > 0:
+                curr = curr.next
+                k -= 1
+            return curr
+
+        if k <= 1:
+            return head
+        
+        dummy = ListNode(0,head)
+        groupPrev = dummy
+
+        while True:
+            groupLast = kth(groupPrev,k)
+
+            if groupLast == None:
+                break
+            groupNext = groupLast.next
+            prev = groupLast.next
+            curr = groupPrev.next
+            while curr != groupNext:
+                tmp = curr.next
+                curr.next = prev
+                prev = curr
+                curr = tmp
+            temp = groupPrev.next
+            groupPrev.next = groupLast
+            groupPrev = temp
+            
+        return dummy.next
