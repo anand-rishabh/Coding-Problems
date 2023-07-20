@@ -1,0 +1,31 @@
+class Solution:
+    def floodFill(self, image, sr, sc, newColor):
+        row = len(image)
+        col = len(image[0])
+        
+        queue = [(sr, sc)]
+        
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        
+        def is_valid(x, y):
+            return x >= 0 and x < row and y >= 0 and y < col
+        
+        if image[sr][sc] == newColor:
+            return image
+        
+        oldColor = image[sr][sc]
+        
+        while queue:
+            x, y = queue.pop(0)
+            
+            if image[x][y] == oldColor:
+                image[x][y] = newColor
+                
+                for dx, dy in directions:
+                    nx = x + dx
+                    ny = y + dy
+                    
+                    if is_valid(nx, ny) and image[nx][ny] == oldColor:
+                        queue.append((nx, ny))
+        
+        return image
