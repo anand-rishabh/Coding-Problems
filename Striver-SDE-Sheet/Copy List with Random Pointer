@@ -1,0 +1,17 @@
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        hm = {None:None}
+        curr = head
+        while curr:
+            copy = Node(curr.val)
+            hm[curr] = copy
+            curr = curr.next
+        
+        curr = head
+        while curr:
+            copy = hm[curr]
+            copy.next = hm[curr.next]
+            copy.random = hm[curr.random]
+            curr = curr.next
+        return hm[head]
+        
