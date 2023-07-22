@@ -1,0 +1,19 @@
+def JobScheduling(self,Jobs,n):
+    Jobs.sort(key=lambda x: x.profit, reverse=True)
+    maxi = Jobs[0].deadline
+    for i in range(n):
+        maxi = max(maxi,Jobs[i].deadline)
+        
+    mark = [-1]*(maxi+1)
+    profit = 0
+    cnt = 0
+    for j in range(n):
+        for k in range(Jobs[j].deadline,0,-1):
+            if mark[k]==-1:
+                mark[k] = Jobs[j].id
+                profit += Jobs[j].profit
+                cnt += 1
+                break
+            
+    return cnt,profit
+    
