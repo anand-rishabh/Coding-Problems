@@ -1,0 +1,13 @@
+def fractionalknapsack(self, W,arr,n):
+    arr.sort(key=lambda x: x.value / x.weight, reverse=True)
+    curr_weight = 0
+    profit = 0.0
+    for i in range(n):
+        if arr[i].weight + curr_weight <= W:
+            curr_weight += arr[i].weight 
+            profit += arr[i].value 
+        else:
+            required_weight = W - curr_weight
+            profit += required_weight * (arr[i].value/arr[i].weight)
+            break
+    return profit
