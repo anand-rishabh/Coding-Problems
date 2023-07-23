@@ -1,0 +1,12 @@
+def subsetSums(self, arr, N):
+		ans = []
+		
+		def helper(ind,sum):
+		    if ind == N:
+		        ans.append(sum)
+		        return
+		    helper(ind+1,sum)
+		    helper(ind+1,sum+arr[ind])
+	    helper(0,0)
+	    return ans
+        
