@@ -1,0 +1,22 @@
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        result = []
+        def palind(a):
+            return a == a[::-1]
+
+        def dfs(ind,temp):
+            if ind >= len(s):
+                result.append(temp[:])
+                return
+            for i in range(ind,len(s)):
+                value = s[ind:i+1]
+                if palind(value):
+                    temp.append(value)
+                    dfs(i+1,temp)
+                    temp.pop()
+                
+            
+        dfs(0,[])
+        return result
+
+      
