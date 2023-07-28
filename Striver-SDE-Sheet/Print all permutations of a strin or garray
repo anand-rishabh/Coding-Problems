@@ -1,0 +1,18 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+
+        ans = []
+
+        def recur(ind):
+            if len(nums) == ind:
+                ans.append(nums[:])
+                return
+            
+            for i in range(ind,len(nums)):
+                nums[i],nums[ind] = nums[ind],nums[i]
+                recur(ind+1)
+                nums[i],nums[ind] = nums[ind],nums[i]
+        
+        recur(0)
+
+        return ans
