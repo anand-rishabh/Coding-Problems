@@ -1,0 +1,27 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+
+        n = len(nums)
+        ans = []
+        freq = {}
+        for i in range(n):
+            freq[i] = -1
+
+
+        def repeat(freq,res):
+
+            if len(res) == n:
+                ans.append(res[:])
+                return
+            
+            for i in range(n):
+                if freq[i] == -1:
+                    res.append(nums[i])
+                    freq[i] = 1
+                    repeat(freq,res)
+                    freq[i] = -1
+                    res.pop()
+
+
+        repeat(freq,[])
+        return ans
